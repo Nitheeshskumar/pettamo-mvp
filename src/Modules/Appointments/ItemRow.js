@@ -19,7 +19,7 @@ function ItemRow(props) {
             checked={props.item.status === "3"}
             type="checkbox"
           /> */}
-          {props.el.time}
+          {moment(props.el.time).format("D/M/Y hh:mm a")}
         </td>
       )}
       <td>
@@ -62,9 +62,9 @@ function ItemRow(props) {
 
       <td>{props.el.petname}</td>
       {/* {
-          props.el.time 
+          props.el.time
       } */}
-      <td>{props.el.status}</td>
+      <td>{moment(props.el.time).isBefore()?'Completed':'Upcoming'}</td>
       <td>{props.el.providertype}</td>
     </tr>
   );
