@@ -1,15 +1,14 @@
 import React from 'react'
 import CardsTemplate from './CardsTemplate'
 
-const ServiceProviderList=({providerList})=>{
-    return     <div class="products">
-    <div class="row">
+const ServiceProviderList=({providerList,handleDetail})=>{
+    return     <div className="products">
+    <div className="row">
         {providerList.map((item,index)=>
- <div class="col-md-4"
- key={index}>
+ <div className="col-md-4"
+ key={index} onClick={()=>handleDetail(item)}>
     <CardsTemplate item={item} />
  </div>
-
         )}
 
     </div>

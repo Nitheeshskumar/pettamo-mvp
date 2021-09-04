@@ -2,33 +2,33 @@ import React from "react";
 
 const CardsTemplate = ({ item }) => {
   return (
-    <div class="cardTemplate">
-      <div class="card mb-4 shadow-sm">
-        <div class="card-body">
-          <h6 class="card-text">
+    <div className="cardTemplate">
+      <div className="card mb-4 shadow-sm">
+        <div className="card-body">
+          <h6 className="card-text">
             <strong> {item.name}</strong>
           </h6>
 
-          <div class="row">
-            <div class="row">
-              <div class="col">Date of Birth</div>
-              <div class="col">{item.dob.format('YYYY-MMMM-DD')}</div>
+          <div className="row">
+            <div className="row">
+              <div className="col">Date of Birth</div>
+              <div className="col">{item.dob.format('YYYY-MMMM-DD')}</div>
             </div>
 
-            <div class="row">
-              <div class="col">Gender</div>
-              <div class="col">{item.gender}</div>
+            <div className="row">
+              <div className="col">Gender</div>
+              <div className="col">{item.gender}</div>
             </div>
 
-            <div class="row">
-              <div class="col">Breed</div>
-              <div class="col">{item.breed}</div>
+            <div className="row">
+              <div className="col">Breed</div>
+              <div className="col">{item.breed}</div>
             </div>
 
 
-            <div class="row">
-              <div class="col">Colour</div>
-              <div class="col">{item.colour}</div>
+            <div className="row">
+              <div className="col">Colour</div>
+              <div className="col">{item.colour}</div>
             </div>
           </div>
         </div>

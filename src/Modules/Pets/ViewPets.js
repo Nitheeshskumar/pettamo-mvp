@@ -33,12 +33,12 @@ const ViewPets=(data)=>{
             colour: "Brown"
         },
     ]
-    const PetList = () => <div class="pets">
-        <div class="row">
+    const PetList = () => <div className="pets">
+        <div className="row">
             <br/><br/>
             <div>Your pets</div>
             {dummyData.map((item,index)=>
-                <div class="col-md-4" key={index}>
+                <div className="col-md-4" key={index}>
                     <CardsTemplate item={item} />
                 </div>
             )}

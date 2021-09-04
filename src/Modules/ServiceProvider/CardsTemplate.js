@@ -2,33 +2,34 @@ import React from "react";
 
 const CardsTemplate = ({ item }) => {
   return (
-    <div class="cardTemplate">
-      <div class="card mb-4 shadow-sm">
+    <div className="cardTemplate">
+      <div className="card mb-4 shadow-sm">
         <img
-          class="card-img-top mt-2"
+          className="card-img-top mt-2"
           src={item.imgUrl}
           alt="Card cap"
           // style="max-height: 200px; max-width: 200px;margin: auto"
         />
-        <div class="card-body">
-          <h6 class="card-text">
+        <div className="card-body">
+          <h6 className="card-text">
             {" "}
             <strong> {item.name}</strong>
           </h6>
-          <p class="card-desc">{item.designation}</p>
-          <div class="d-flex justify-content-between align-items-center">
+          <p className="card-desc">{item.designation}</p>
+          <p className="card-desc">{item.location}</p>
+          <div className="d-flex justify-content-between align-items-center">
             <span
-              class="text-muted"
+              className="text-muted"
               // style="color:crimson !important"
             >
-              ₹ {item.rates}
+               {item.serviceType}
             </span>
 
-            <div class="btn-group"></div>
+            <div className="btn-group"></div>
             {item.isLicensed ? (
-              <small class="text-muted footerIcons">
-                <a href="#fsdgd" class="p-2">
-                  <i class="fa fa-check-double"></i>
+              <small className="text-muted footerIcons">
+                <a href="#fsdgd" className="p-2">
+                  <i className="fa fa-check-double"></i>
                 </a>
               </small>
             ) : (

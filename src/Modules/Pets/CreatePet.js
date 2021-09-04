@@ -49,29 +49,29 @@ const CreatePet=({setIsSignup})=>{
   const AddPetForm = () =>
   <>
     <form onSubmit={handleAddPet}>
-      <div class="form-group row">
-        <label for="name" class="col-sm-2 col-form-label">Name</label>
-        <div class="col-sm-10">
+      <div className="form-group row">
+        <label for="name" className="col-sm-2 col-form-label">Name</label>
+        <div className="col-sm-10">
           <input type="text" id="name" className="form-control" ref={refName}/>
         </div>
       </div>
-      <div class="form-group row mt-3">
-        <label for="birthdate" class="col-sm-2 col-form-label">Birthdate</label>
-        <div class="col-sm-10">
+      <div className="form-group row mt-3">
+        <label for="birthdate" className="col-sm-2 col-form-label">Birthdate</label>
+        <div className="col-sm-10">
           <DateField handleChange={handleBirthdate} />
         </div>
       </div>
       <SelectField options={['Female','Male']} label="Gender"  />
-      <div class="form-group row mt-2 mb-3">
-        <label for="name" class="col-sm-2 col-form-label">Color</label>
-        <div class="col-sm-10">
+      <div className="form-group row mt-2 mb-3">
+        <label for="name" className="col-sm-2 col-form-label">Color</label>
+        <div className="col-sm-10">
           <input type="text" id="color" className="form-control" ref={refColour}/>
         </div>
       </div>
       {/* <SelectField options={['Female','Male']} label="Colour"  /> */}
-      {/* <div class="form-group row">
-        <label for="gender" class="col-sm-2 col-form-label">Gender</label>
-        <div class="col-sm-10">
+      {/* <div className="form-group row">
+        <label for="gender" className="col-sm-2 col-form-label">Gender</label>
+        <div className="col-sm-10">
 
           <select id="gender" ref={refGender} className="select">
             <option selected>Female</option>
@@ -79,9 +79,9 @@ const CreatePet=({setIsSignup})=>{
           </select>
         </div>
       </div> */}
-      {/* <div class="form-group row">
-        <label for="colour" class="col-sm-2 col-form-label">Colour</label>
-        <div class="col-sm-10">
+      {/* <div className="form-group row">
+        <label for="colour" className="col-sm-2 col-form-label">Colour</label>
+        <div className="col-sm-10">
           <select id="colour" ref={refColour}>
             <option selected>Black</option>
             <option>Brown</option>
