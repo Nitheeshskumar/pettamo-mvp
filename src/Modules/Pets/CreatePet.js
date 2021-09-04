@@ -1,105 +1,92 @@
-import React from 'react'
-import signupimg from '../Assets/create-account.svg'
+import React, { useState } from 'react'
 import uuid from "node-uuid";
-import { createUser } from '../Services/UserServices';
-import Toast, { toastError, toastSuccess ,toaster} from '../Components/Toast';
+import { GlobalContext } from '../../ContextStore/ContextAPI';
+import Toast, { toastError, toastSuccess ,toaster} from '../../Components/Toast';
+import DateField from '../../Components/DateField';
 
 const CreatePet=({setIsSignup})=>{
-    const { loginState } = React.useContext(GlobalContext);
-  const Email = React.useRef('')
-const Pswd = React.useRef('')
-const Name= React.useRef('')
-const valPswd=pswd=>{
- return Boolean (/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.exec(pswd))
-}
-  const handleSignup=(e)=>{
-    e.preventDefault()
-if(!valPswd(Pswd.current.value)){
-  toaster.error('Invalid Password !')
+  const { loginState } = React.useContext(GlobalContext);
 
-  return
-}
-    const payload={
-      name:Name.current.value,
-      dob:Email.current.value,
-      gender:Pswd.current.value,
-      id:uuid.v1(),
-      color:'',
-      rel_type:'pet',
-      rel_id:loginState.userDetails.id
-    }
 
-//     toast.promise(createUser(payload), {
-//   pending: 'Creating User',
-//   success: 'User Created. Login to Continue 👌',
-//   error:  {render({data}){
-//     return data.response.data + '🤯'}}
-// }).then(res=>{console.log(res);
-//   setIsSignup(false)
-// })
- const id = toaster.loading("Creating User...")
- createUser(payload).then(res=>{
-   console.log(res);
-   toastSuccess(id,'User Created. Login to Continue 👌');
-      setIsSignup(false)
-    }).catch(e=>{
-      toastError(id,e.response.data + '🤯')
-    })
+  const refName = React.useRef('')
+  const [birthdate, setBirthdate] = useState(null)
+  const refGender= React.useRef('')
+  const refColour = React.useRef('')
+
+
+  const payload={
+    name: refName.current.value,
+    dob: birthdate,
+    gender: refGender.current.value,
+    id: uuid.v1(),
+    color: refColour.current.value,
+    rel_type: 'pet',
+    rel_id: loginState.userDetails.id
   }
 
+  const handleAddPet = (evt) => {
+    evt.preventDefault()
 
-    return  <div className="create-account">
-    <form className="form-signup needs-validation" onSubmit={handleSignup} >
-      <img className="mb-4" src={signupimg} width="72" height="72" alt="Create Account"/>
-      <h1 className="h3 mb-3 font-weight-normal">Create an account</h1>
+    const data = {
+      name: refName.current.value,
+      dob: birthdate,
+      gender: refGender.current.value,
+      color: refColour.current.value,
+    }
 
-<div className="row">
-        <div className="col-md mb-3">
-          <input
-            type="text"
-            className="form-control"
-            id="userName"
-            placeholder="Pet Name"
-  ref={Name}
-            required
-          />
-          <div className="invalid-feedback">Valid name is required.</div>
+    console.log('data: ', data)
+
+    // TODO: perform write to backend
+    // TODO: show confirmation
+  }
+
+  const handleBirthdate = (evt) => {
+    const momentObj = evt.target.value
+    setBirthdate(momentObj.format())
+  }
+
+  const AddPetForm = () => 
+  <>
+    <form onSubmit={handleAddPet}>
+      <div class="form-group row">
+        <label for="name" class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-10">
+          <input type="text" id="name" ref={refName}/>
         </div>
       </div>
-      <div className="row">
-        <div className="col-md mb-3">
-          <input
-            type="text"
-            className="form-control"
-            id="emailId"
-            placeholder="Email address"
-            required
-            ref={Email}
-          />
-          <div className="invalid-feedback">Valid email is required.</div>
+      <div class="form-group row">
+        <label for="birthdate" class="col-sm-2 col-form-label">Birthdate</label>
+        <div class="col-sm-10">
+          <DateField handleChange={handleBirthdate} />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="gender" class="col-sm-2 col-form-label">Gender</label>
+        <div class="col-sm-10">
+          <select id="gender" ref={refGender}>
+            <option selected>Female</option>
+            <option>Male</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="colour" class="col-sm-2 col-form-label">Colour</label>
+        <div class="col-sm-10">
+          <select id="colour" ref={refColour}>
+            <option selected>Black</option>
+            <option>Brown</option>
+            <option>White</option>
+          </select>
         </div>
       </div>
 
-      <div className="row">
-        <div className="col-md mb-3 text-start lh-sm">
-          <input
-            type="text"
-            className="form-control"
-            id="act-password"
-            placeholder="New password"
-            required
-            ref={Pswd}
-         />
-        <span className="notes">Password should be Minimum eight characters, at least one letter, one number and one special character</span>
-          <div className="invalid-feedback">Valid Password is required.</div>
-        </div>
-      </div>
-      <button className="btn btn-lg btn-primary btn-block" type="submit">
-       Sign Up
-      </button>
+      <button type="submit" className="btn btn-lg btn-primary btn-block">
+      Add Pet
+    </button>
     </form>
-    <Toast/>
-  </div>
+  </>
+  
+  return AddPetForm()
 }
 
 export default CreatePet
