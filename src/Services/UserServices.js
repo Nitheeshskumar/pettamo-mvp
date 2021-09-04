@@ -36,7 +36,7 @@ export const listPets = async (body) => {
 };
 
 export const createPets = async (body) => {
-  const response = await axios.post("/.netlify/functions/createPets", body);
+  const response = await axios.post("/.netlify/functions/createPet", body);
   return response.data
 };
 

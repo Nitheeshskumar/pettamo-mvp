@@ -6,7 +6,7 @@ exports.handler = async (event, context) => {
   console.log(body)
 
   try {
-    const res = await todos.create(body.id,{body});
+    const res = await todos.create(body.id,body);
     console.log(res)
     // const list = await todos.get( `${body.id}/todos`);
     return {

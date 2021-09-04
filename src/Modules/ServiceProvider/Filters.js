@@ -15,8 +15,8 @@ return  <div className="form-group text-start mt-2">
 
 }
 
-const Filters=()=>{
-  const [filter,setFilter]=React.useState({})
+const Filters=({setFilter,filter,handleSubmit})=>{
+
 const handleChange=e=>{
 
   setFilter(state=>({...state,[e.target.name]:e.target.value}))
@@ -28,8 +28,10 @@ const handleChange=e=>{
       </h4>
 <SelectField options={['All','Medical','Non-Medical']} label="Category:" name ='serviceType' value={filter.serviceType} onChange={handleChange}/>
 <SelectField options={['All','Cat','Dog','Birds']} label="Pet:" name ='petType' value={filter.petType} onChange={handleChange}/>
-<SelectField options={['All','Morning','Evening']} label="Time:" name ='time' value={filter.time} onChange={handleChange}/>
-
+<SelectField options={['All','Morning','Afternoon']} label="Time:" name ='time' value={filter.time} onChange={handleChange}/>
+<button className="btn btn-lg btn-primary btn-block mt-2" type="button" onClick={handleSubmit}>
+             Search
+          </button>
 
     </div>
   </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import moment  from "moment";
 
 const CardsTemplate = ({ item }) => {
   return (
@@ -11,24 +12,24 @@ const CardsTemplate = ({ item }) => {
 
           <div className="row">
             <div className="row">
-              <div className="col">Date of Birth</div>
-              <div className="col">{item.dob.format('YYYY-MMMM-DD')}</div>
+              <div className="col fw-bold">Date of Birth:</div>
+              <div className="col">{moment(item.dob).format('YYYY-MMMM-DD')}</div>
             </div>
 
             <div className="row">
-              <div className="col">Gender</div>
+              <div className="col fw-bold">Gender:</div>
               <div className="col">{item.gender}</div>
             </div>
 
             <div className="row">
-              <div className="col">Breed</div>
+              <div className="col fw-bold">Breed:</div>
               <div className="col">{item.breed}</div>
             </div>
 
 
             <div className="row">
-              <div className="col">Colour</div>
-              <div className="col">{item.colour}</div>
+              <div className="col fw-bold">Colour:</div>
+              <div className="col">{item.color}</div>
             </div>
           </div>
         </div>

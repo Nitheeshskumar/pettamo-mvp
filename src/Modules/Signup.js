@@ -1,5 +1,5 @@
 import React from 'react'
-import signupimg from '../Assets/create-account.svg'
+import loginimg from '../Assets/astronaut.png'
 import uuid from "node-uuid";
 import { createUser } from '../Services/UserServices';
 import Toast, { toastError, toastSuccess ,toaster} from '../Components/Toast';
@@ -23,18 +23,8 @@ if(!valPswd(Pswd.current.value)){
       email:Email.current.value,
       password:Pswd.current.value,
       id:uuid.v1(),
-      pets:[],
       rel_type:'owner'
     }
-
-//     toast.promise(createUser(payload), {
-//   pending: 'Creating User',
-//   success: 'User Created. Login to Continue 👌',
-//   error:  {render({data}){
-//     return data.response.data + '🤯'}}
-// }).then(res=>{console.log(res);
-//   setIsSignup(false)
-// })
  const id = toaster.loading("Creating User...")
  createUser(payload).then(res=>{
    console.log(res);
@@ -48,7 +38,7 @@ if(!valPswd(Pswd.current.value)){
 
     return  <div className="create-account">
     <form className="form-signup needs-validation" onSubmit={handleSignup} >
-      <img className="mb-4" src={signupimg} width="72" height="72" alt="Create Account"/>
+      <img className="mb-4" src={loginimg} width="72" height="72" alt="Create Account"/>
       <h1 className="h3 mb-3 font-weight-normal">Create an account</h1>
 
 <div className="row">

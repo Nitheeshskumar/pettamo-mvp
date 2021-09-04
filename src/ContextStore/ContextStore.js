@@ -8,6 +8,7 @@ import { GlobalContext, GlobalDispatchContext } from './ContextAPI';
 
 const ContextStore = ({ children }) => {
   const userDetails = ManageLocalStorage.get('userDetails');
+  const petsList = ManageLocalStorage.get('petsList');
   const initialState = {
     loginState: {
       userDetails: userDetails || {},
@@ -15,7 +16,8 @@ const ContextStore = ({ children }) => {
     },
     loadingState: {
       isLoading: false
-    }
+    },
+    petsList
   };
 
   const [globalState, dispatch] = React.useReducer(rootReducer, initialState);

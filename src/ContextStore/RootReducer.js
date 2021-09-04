@@ -27,6 +27,12 @@ const rootReducer = (state , action = {}) => {
             }
           }
     }
+    if(action.type==='updatePets'){
+      ManageLocalStorage.set('petsList',action.payload)
+      return {...state,
+        petsList: action.payload
+        }
+  }
     return { ...state };
 }
     export default rootReducer;

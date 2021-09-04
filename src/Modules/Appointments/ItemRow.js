@@ -4,7 +4,7 @@ import moment from "moment";
 function ItemRow(props) {
   //   console.log(props);
   //   console.log(Date.toLocaleTimeString);
-  console.log(moment(props.el.time).format("D/M/Y hh:mm a"));
+
   //   console.log(moment());
   //   console.log(moment(now, "DD/MM/YYYY HH:mm:ss")); moment(props.el.time,"D/M/Y hh:mm a").isBefore()
   return (

@@ -18,7 +18,7 @@ if(body.serviceType){
 
 
 
-    const list = await todos.find( {rel_type:  { $eq:'provider' }   });
+    const list = await todos.find( query);
     return {
       statusCode: 200,
       body: JSON.stringify(list),

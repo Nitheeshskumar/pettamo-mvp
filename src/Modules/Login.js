@@ -1,5 +1,5 @@
 import React from 'react';
-import loginimg from '../Assets/login-img.png'
+import loginimg from '../Assets/astronaut.png'
 import { useHistory } from "react-router-dom";
 // import Alert from './Components/Alert'
 import Signup from './Signup';
@@ -18,13 +18,16 @@ const getFname=name=> 'Hello '+name.split(' ')[0]
 const handleSubmit=(e)=>{
   const payload={email:Email.current.value,password:Pswd.current.value}
 e.preventDefault()
-const id = toaster.loading("Loggin in...")
+let id = toaster.loading("Logging in...")
 authenticate(payload)
-.then(res=>{console.log(res);
+.then(res=>{
   toastSuccess(id,getFname(res.name) + '👌')
-  dispatch({type:'login',payload:res})
-  ManageLocalStorage.set('userDetails',res)
-  history.push('./dashboard')
+  setTimeout(() => {
+    dispatch({type:'login',payload:res})
+    ManageLocalStorage.set('userDetails',res)
+    history.push('./dashboard')
+  }, 500);
+
 }).catch(e=>toastError(id,e.response.data + '🤯'))
 
 }
@@ -76,6 +79,7 @@ authenticate(payload)
         </p>
       </div>
     </div>
+    <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
   </div>
       {/* {show &&<Alert content={content.current} show={show} variant={variant.current} closeAlert={closeAlert}/> } */}
 

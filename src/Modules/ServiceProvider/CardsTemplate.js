@@ -5,7 +5,7 @@ const CardsTemplate = ({ item }) => {
     <div className="cardTemplate">
       <div className="card mb-4 shadow-sm">
         <img
-          className="card-img-top mt-2"
+          className="card-img-top mt-2 cardImg"
           src={item.imgUrl}
           alt="Card cap"
           // style="max-height: 200px; max-width: 200px;margin: auto"

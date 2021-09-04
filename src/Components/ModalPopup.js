@@ -2,13 +2,13 @@ import {  Button, Modal } from 'react-bootstrap';
 import React from 'react'
 
 
-const ModalPopup=({show,setShow,children,handleSubmit,heading})=>{
+const ModalPopup=({show,handleClose,children,handleSubmit,heading})=>{
 
 
     return (
       <>
 
-        <Modal show={show} onHide={()=>setShow(false)} contentClassName='minht100' >
+        <Modal show={show} onHide={handleClose} contentClassName='minht100' >
           <Modal.Header closeButton>
             <Modal.Title>{heading}</Modal.Title>
           </Modal.Header>

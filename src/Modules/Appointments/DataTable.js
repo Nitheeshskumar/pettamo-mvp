@@ -5,6 +5,7 @@ import ItemRow from "./ItemRow";
 import {
   sortByDateAsc,
   sortByDateDesc,
+  sortByGeneral,
   sortByNameAsc,
   sortByNameDesc,
   sortByPriorityAsc,
@@ -73,6 +74,14 @@ function ListContainer(props) {
         break;
 
       default:
+        if (sort === "asc") {
+          sortedTodos = sortByGeneral(props.appointMentsList, e.target.dataset.sortBy,sort);
+          setSort("desc");
+        } else {
+          // eslint-disable-next-line no-unused-vars
+          sortedTodos = sortByGeneral(props.appointMentsList, e.target.dataset.sortBy,sort);
+          setSort("asc");
+        }
     }
 
     // props.onSortTodos(sortedTodos);
@@ -206,14 +215,13 @@ function ListContainer(props) {
                   Status
                 </th> */}
 
-                <th className="has-text-light has-background-link">
+                <th className="has-text-light has-background-link" onClick={handleSort} data-sort-by="time">
                   Date&Time
                 </th>
-                <th className="has-text-light has-background-link">
+                <th className="has-text-light has-background-link"  onClick={handleSort} data-sort-by="serviceProviderName">
                   Serviceprovider Name
                 </th>
                 <th
-                  className="has-text-light has-background-link"
                   className="has-text-light has-background-link"
                   data-sort-by="petname"
                   onClick={handleSort}
@@ -221,8 +229,8 @@ function ListContainer(props) {
                   Pet Name
                 </th>
 
-                <th className="has-text-light has-background-link">Status</th>
-                <th className="has-text-light has-background-link">
+                <th className="has-text-light has-background-link" onClick={handleSort} data-sort-by="time">Status</th>
+                <th className="has-text-light has-background-link" onClick={handleSort} data-sort-by="providertype">
                   Provider Type
                 </th>
                 <th className="has-text-light has-background-link"></th>
@@ -239,7 +247,7 @@ function ListContainer(props) {
                         />
                     )} */}
             {props.appointMentsList.map((el) =>
-              filter.isMedical === "1" ? <tr></tr> : <ItemRow el={el} />
+              filter.isMedical === "1" ? <tr></tr> : <ItemRow el={el} key={el.id} />
             )}
           </tbody>
         </table>

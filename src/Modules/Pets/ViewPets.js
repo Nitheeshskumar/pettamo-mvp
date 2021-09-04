@@ -4,7 +4,7 @@ import CardsTemplate from './CardsTemplate'
 // import M from 'minimatch'
 
 
-const ViewPets=(data)=>{
+const ViewPets=({petList})=>{
 
     // sample: getAge(moment().subtract(500, 'days'))
     const getAge = (data) => {
@@ -37,7 +37,7 @@ const ViewPets=(data)=>{
         <div className="row">
             <br/><br/>
             <div>Your pets</div>
-            {dummyData.map((item,index)=>
+            {petList.map((item,index)=>
                 <div className="col-md-4" key={index}>
                     <CardsTemplate item={item} />
                 </div>
