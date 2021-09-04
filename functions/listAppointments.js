@@ -10,6 +10,9 @@ let query={rel_type:  { $eq:'appointment' },rel_id:{ $eq:body.rel_id }}
 if(body.pet){
     query.pet = { $eq:body.pet }
 }
+if(body.serviceType){
+  query.serviceType = { $eq:body.serviceType }
+}
 
     const list = await todos.find(query);
     return {

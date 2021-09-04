@@ -36,6 +36,7 @@ const handleChange=e=>{
      let id = toaster.loading("Creating Pets...")
      createPets(payload).then(res=>{
       toastSuccess(id,'Created 👌');
+      setData({gender:'Female'})
       const list = Object.keys(res).map(el=>res[el])
       setPetList(list)
 
@@ -58,7 +59,7 @@ const handleChange=e=>{
       <div className="form-group row">
         <label htmlFor="name" className="col-sm-2 col-form-label">Name</label>
         <div className="col-sm-10">
-          <input type="text" id="name" name="name" className="form-control"  onChange={handleChange} required/>
+          <input type="text" id="name" name="name" className="form-control" value={data.name} onChange={handleChange} required/>
         </div>
       </div>
       <div className="form-group row mt-3">
@@ -72,13 +73,13 @@ const handleChange=e=>{
       <div className="form-group row mt-2 mb-3">
         <label htmlFor="breed" className="col-sm-2 col-form-label">Breed</label>
         <div className="col-sm-10">
-          <input type="text" id="breed" name="breed" className="form-control"  onChange={handleChange} required/>
+          <input type="text" id="breed" name="breed" className="form-control"  value={data.breed} onChange={handleChange} required/>
         </div>
       </div>
       <div className="form-group row mt-2 mb-3">
         <label htmlFor="color" className="col-sm-2 col-form-label">Color</label>
         <div className="col-sm-10">
-          <input type="text" id="color" name="color" className="form-control"  onChange={handleChange} required/>
+          <input type="text" id="color" name="color" className="form-control"  value={data.color} onChange={handleChange} required/>
         </div>
       </div>
 

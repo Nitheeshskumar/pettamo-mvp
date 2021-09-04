@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import TextFormField from "../../Components/TextFormField";
+// import TextFormField from "../../Components/TextFormField";
 // import ProgressBar from './ProgressBar';
 import ItemRow from "./ItemRow";
 import {
@@ -13,21 +13,20 @@ import {
 } from "../../Utils/Utils";
 
 function ListContainer(props) {
-  const [search, setSearch] = useState("");
+  // const [search, setSearch] = useState("");
   const [sort, setSort] = useState("asc");
-  const [filter, setFilter] = useState(["1", "2"]);
+  const [filter, setFilter] = useState('Medical');
 
   // search todos by name
-  const handleSearch = (e) => {
-    setSearch(e.target.value);
-  };
+  // const handleSearch = (e) => {
+  //   setSearch(e.target.value);
+  // };
   const handleChange = (e) => {
-    if (e.target.checked) {
-      setFilter((state) => [...state, e.target.name]);
-    } else {
-      setFilter((state) => state.filter((el) => el !== e.target.name));
-    }
+
+      setFilter( e.target.value);
+      props.loadApointments({serviceType:e.target.value})
   };
+  console.log(filter)
   // sort on list item header label click
   const handleSort = (e) => {
     let sortedTodos;
@@ -87,61 +86,41 @@ function ListContainer(props) {
     // props.onSortTodos(sortedTodos);
   };
 
-  // initialize list test data
-  // useEffect(() => {
-  //     getDummyData().forEach(data => {
-  //         props.onDummyData(data);
-  //     });
-  // }, []);
-
   return (
     <div className="column">
       <h2 className="is-size-3 has-text-centered">Appointments </h2>
 
-      {/* <TextFormField
-        handleChange={handleSearch}
-        inputType="search"
-        name="search"
-        placeholder="Search Task"
-      /> */}
 
-      {/* <ProgressBar todos={props.todos} /> */}
-
-      <div className="field">
-        {/* <div className="form-check form-check-inline">
+      <form className="field">
+        <div className="form-check form-check-inline">
           <input
             className="form-check-input"
             type="radio"
-            name="isMedical"
+
             id="inlineCheck1"
-            value="1"
-            checked={filter.includes("1")}
+            value="Medical"
+            checked={filter==="Medical"}
             onChange={handleChange}
           />
           <label className="form-check-label" htmlFor="inlineCheck1">
-            To Do
+            Medical
           </label>
-        </div> */}
-        {/* <div className="form-check form-check-inline">
+        </div>
+        <div className="form-check form-check-inline">
           <input
             className="form-check-input"
             type="radio"
-            name="isMedical"
+
             id="inlineCheck2"
-            value="2"
-            checked={filter.includes("2")}
+            value="Non-Medical"
+            checked={filter==="Non-Medical"}
             onChange={handleChange}
           />
           <label className="form-check-label" htmlFor="inlineCheck2">
-            Doing
+            Non-Medical
           </label>
-        </div> */}
-
-        {/* <div className="form-check form-check-inline">
-  <input className="form-check-input" type="checkbox" name="3" id="inlineCheck3" value="3" checked={filter.includes('3')} onChange={handleChange}/>
-  <label className="form-check-label" htmlFor="inlineCheck3">Done</label>
-</div> */}
-      </div>
+        </div>
+      </form>
 
       <div className="table-container ht400 tableFixHead">
         <table
@@ -149,32 +128,9 @@ function ListContainer(props) {
           style={{ whiteSpace: "nowrap", overflow: "auto" }}
         >
           <thead>
-            {filter.isMedical === "1" ? (
+            {filter === "Medical" ? (
               <tr className="has-background-link">
-                {/* <th
-                  className="has-text-light has-background-link"
-                  data-sort-by="date"
-                  onClick={handleSort}
-                >
-                  Date
-                </th>
-                <th
-                  className="has-text-light has-background-link"
-                  data-sort-by="name"
-                  onClick={handleSort}
-                >
-                  Task
-                </th>
-                <th
-                  className="has-text-light has-background-link"
-                  data-sort-by="status"
-                  onClick={handleSort}
-                >
-                  Status
-                </th>
-                <th className="has-text-light has-background-link">
-                  Booking Type
-                </th> */}
+
                 <th className="has-text-light has-background-link">
                   Date&Time
                 </th>
@@ -191,29 +147,7 @@ function ListContainer(props) {
               </tr>
             ) : (
               <tr>
-                {/* <th className="has-text-light has-background-link"></th> */}
 
-                {/* <th
-                  className="has-text-light has-background-link"
-                  data-sort-by="date"
-                  onClick={handleSort}
-                >
-                  Date
-                </th>
-                <th
-                  className="has-text-light has-background-link"
-                  data-sort-by="name"
-                  onClick={handleSort}
-                >
-                  Task
-                </th>
-                <th
-                  className="has-text-light has-background-link"
-                  data-sort-by="status"
-                  onClick={handleSort}
-                >
-                  Status
-                </th> */}
 
                 <th className="has-text-light has-background-link" onClick={handleSort} data-sort-by="time">
                   Date&Time
@@ -230,22 +164,15 @@ function ListContainer(props) {
                 </th>
 
                 <th className="has-text-light has-background-link" onClick={handleSort} data-sort-by="time">Status</th>
-                <th className="has-text-light has-background-link" onClick={handleSort} data-sort-by="providertype">
+                {/* <th className="has-text-light has-background-link" onClick={handleSort} data-sort-by="providertype">
                   Provider Type
-                </th>
-                <th className="has-text-light has-background-link"></th>
+                </th> */}
+                <th className="has-text-light has-background-link"> Link</th>
               </tr>
             )}
           </thead>
           <tbody>
-            {/* {[...props.todos.values()].reverse().map(item =>
-                        item.name.toLowerCase().includes(search) && filter.includes(item.status)&& !item.isDeleted &&
-                        <ItemRow
-                            key={item.id}
-                            item={item}
-                            {...props}
-                        />
-                    )} */}
+
             {props.appointMentsList.map((el) =>
               filter.isMedical === "1" ? <tr></tr> : <ItemRow el={el} key={el.id} />
             )}

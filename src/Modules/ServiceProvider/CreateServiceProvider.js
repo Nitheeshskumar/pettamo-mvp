@@ -35,13 +35,13 @@ isLicensed:data.isLicensed?true:false,
 
 //       }
 
-//  let id = toaster.loading("Creating Service...")
-//  createService(payload).then(res=>{
-//    console.log(res);
-//    toastSuccess(id,'Created 👌');
-//     }).catch(e=>{
-//       toastError(id,e?.response?.data + '🤯')
-//     })
+ let id = toaster.loading("Creating Service...")
+ createService(payload).then(res=>{
+   console.log(res);
+   toastSuccess(id,'Created 👌');
+    }).catch(e=>{
+      toastError(id,e?.response?.data + '🤯')
+    })
   }
 
   const handleChange=e=>{

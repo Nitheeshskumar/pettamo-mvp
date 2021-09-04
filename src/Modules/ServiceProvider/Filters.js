@@ -27,8 +27,8 @@ const handleChange=e=>{
         <span className="text-muted">Filters:</span>
       </h4>
 <SelectField options={['All','Medical','Non-Medical']} label="Category:" name ='serviceType' value={filter.serviceType} onChange={handleChange}/>
-<SelectField options={['All','Cat','Dog','Birds']} label="Pet:" name ='petType' value={filter.petType} onChange={handleChange}/>
-<SelectField options={['All','Morning','Afternoon']} label="Time:" name ='time' value={filter.time} onChange={handleChange}/>
+<SelectField options={['All','Cats','Dogs','Birds']} label="Pet:" name ='petType' value={filter.petType} onChange={handleChange}/>
+<SelectField options={['All','Morning','Evening']} label="Time:" name ='time' value={filter.time} onChange={handleChange}/>
 <button className="btn btn-lg btn-primary btn-block mt-2" type="button" onClick={handleSubmit}>
              Search
           </button>

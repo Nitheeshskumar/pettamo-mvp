@@ -6,8 +6,8 @@ import Filters from './Filters'
 import ServiceProviderList from './ServiceProviderList'
 
 const ServiceProviderContainer=()=>{
-  let Dummy = [{id:'sdfsdf',petType:'Dogs',imgUrl:'https://www.wikihow.com/images/thumb/e/ed/Take-Care-of-a-Dog-Step-12-Version-2.jpg/v4-460px-Take-Care-of-a-Dog-Step-12-Version-2.jpg',
-  time:'Morning',name:'Global Dog care',description:'Best place for your puppies',serviceType:'Non-Medical',location:'Texas',isLicensed:true}]
+  // let Dummy = [{id:'sdfsdf',petType:'Dogs',imgUrl:'https://www.wikihow.com/images/thumb/e/ed/Take-Care-of-a-Dog-Step-12-Version-2.jpg/v4-460px-Take-Care-of-a-Dog-Step-12-Version-2.jpg',
+  // time:'Morning',name:'Global Dog care',description:'Best place for your puppies',serviceType:'Non-Medical',location:'Texas',isLicensed:true}]
 const history =useHistory()
 
 const [providerList,setProviderList]=React.useState([])

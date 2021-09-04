@@ -8,7 +8,6 @@ exports.handler = async (event, context) => {
   try {
     const res = await todos.create(body.id,body);
     console.log(res)
-    // const list = await todos.get( `${body.id}/todos`);
     return {
       statusCode: 200,
       body: JSON.stringify(res),

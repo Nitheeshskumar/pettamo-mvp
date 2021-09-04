@@ -3,9 +3,9 @@ import { useHistory, useLocation } from 'react-router'
 import DateField from '../../Components/DateField'
 import ModalPopup from '../../Components/ModalPopup'
 import SelectField from '../../Components/SelectField'
-import { toaster, toastSuccess } from '../../Components/Toast'
+import { toaster, toastError, toastSuccess } from '../../Components/Toast'
 import { GlobalContext } from '../../ContextStore/ContextAPI'
-import { listPets } from '../../Services/UserServices'
+import { createAppointments, listPets } from '../../Services/UserServices'
 
 const ServiceProviderDetail=()=>{
   const location =useLocation()
@@ -13,25 +13,41 @@ const ServiceProviderDetail=()=>{
   const details = location.state
   const [show,setShow]=React.useState(false)
   const [birthdate, setBirthdate] = React.useState(null)
-  const refName=React.useRef('')
+
   const { loginState } = React.useContext(GlobalContext);
   const [petList,setPetList]=React.useState([])
 
-  const [data,setData]=React.useState({gender:'Female'})
+  const [data,setData]=React.useState({})
 
   const handleChange=e=>{
 
     setData(state=>({...state,[e.target.name]:e.target.value}))
   }
 const handleSubmit=()=>{
+  if(!petList.length){
+    toaster.error('No Pets selected !')
+    return
+
+  }
 const payload ={
   ...data,
+  pet:data?.pet||petList[0].name,
   time:birthdate,
+  serviceType:details.serviceType,
+  serviceProviderName:details.name,
   rel_type:'appointment',
-  rel_id:loginState.userDetails.id
+  rel_id:loginState.userDetails.id,
+
 }
 console.log(payload)
+ let id = toaster.loading("Creating Appointment...")
+     createAppointments(payload).then(res=>{
+      toastSuccess(id,'Created 👌');
+      handleClose()
 
+    }).catch(e=>{
+      toastError(id,e?.response?.data + '🤯')
+    })
 }
 const handleBirthdate = (evt) => {
   const momentObj = evt.target.value
@@ -68,7 +84,7 @@ setShow(true)
      {show&&<ModalPopup show={show} setShow={setShow} heading='Schedule Appointment' handleSubmit={handleSubmit} handleClose={handleClose} >
 
      <form >
-     <SelectField options={petList.map(el=>el.name)} label="Pet Name" name ='gender' value={data.gender} onChange={handleChange}/>
+     <SelectField options={petList.map(el=>el.name)} label="Pet Name" name ='pet' value={data.pet} onChange={handleChange}/>
       <div className="form-group row mt-3">
         <label for="birthdate" className="col-sm-2 col-form-label">Schedule At</label>
         <div className="col-sm-10">
@@ -78,7 +94,7 @@ setShow(true)
       <div className="form-group row mt-2">
         <label for="name" className="col-sm-2 col-form-label">Remarks</label>
         <div className="col-sm-10">
-          <input type="text" id="name" className="form-control" name="remarks" value={data.remarks}/>
+          <input type="text" id="name" className="form-control" name="remarks" value={data.remarks}  onChange={handleChange}/>
         </div>
       </div>
     </form>

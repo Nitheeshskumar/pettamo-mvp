@@ -48,7 +48,7 @@ export const listAppointments = async (body) => {
 };
 
 export const createAppointments = async (body) => {
-  const response = await axios.post("/.netlify/functions/createAppointments", body);
+  const response = await axios.post("/.netlify/functions/createAppointment", body);
   return response.data
 };
 

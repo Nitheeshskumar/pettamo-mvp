@@ -24,6 +24,7 @@ const loadPets=()=>{
 }
     React.useEffect(()=>{
         loadPets()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
     return  <>
         <CreatePet setPetList={setPetList}/>

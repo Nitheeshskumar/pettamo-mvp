@@ -25,7 +25,7 @@ authenticate(payload)
   setTimeout(() => {
     dispatch({type:'login',payload:res})
     ManageLocalStorage.set('userDetails',res)
-    history.push('./dashboard')
+    history.replace('/dashboard')
   }, 500);
 
 }).catch(e=>toastError(id,e.response.data + '🤯'))
