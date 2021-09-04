@@ -3,6 +3,7 @@ import signupimg from '../Assets/create-account.svg'
 import uuid from "node-uuid";
 import { createUser } from '../Services/UserServices';
 import Toast, { toastError, toastSuccess ,toaster} from '../Components/Toast';
+import { GlobalContext } from '../../ContextStore/ContextAPI';
 
 const CreatePet=({setIsSignup})=>{
     const { loginState } = React.useContext(GlobalContext);

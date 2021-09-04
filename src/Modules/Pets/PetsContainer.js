@@ -3,9 +3,11 @@ import ViewPets from "./ViewPets"
 
 
 const PetsContainer=()=>{
-
-    return <><CreatePet/> <ViewPets/></>
-
+    return  <>
+        <CreatePet/>
+        <br/><br/>
+        <ViewPets/>
+    </>
 }
 
 export default PetsContainer

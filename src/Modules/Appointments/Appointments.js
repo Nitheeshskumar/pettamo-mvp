@@ -6,14 +6,14 @@ const Appointments = () => {
     <DataTable
       appointMentsList={[
         {
-          time: "4/09/21",
+          time: 1630749867253,
           serviceProviderName: "test name",
           petname: "tony",
           status: "pending",
           providertype: "Medical",
         },
         {
-          time: "4/09/21",
+          time: 1640749867253,
           serviceProviderName: "test name1",
           petname: "tony1",
           status: "pending",

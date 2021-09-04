@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link, useLocation,useHistory} from 'react-router-dom'
 import { GlobalContext, GlobalDispatchContext } from '../ContextStore/ContextAPI'
-import logotask from '../Assets/logotask.png'
+import logo from '../Assets/logo-pettamo.png'
 import { ManageLocalStorage } from '../Utils/ManageLocalStorage';
 const Header =()=>{
 const {loginState}= React.useContext(GlobalContext)
@@ -22,11 +22,15 @@ React.useEffect(()=>{
   setShow(false)
 },[location])
 const toLogin=()=>history.push('./dashboard')
-    return     <nav className="navbar navbar-expand-lg navbar-light bg-light" id="nav">
+    return     <nav className="navbar navbar-expand-lg navbar-light" id="nav" style={{background: '#FDF5E5'}}>
     <div className="imagecontainer" onClick={toLogin}>
-    <img alt="Vue logo" src={logotask} width="50px" className="CartLogo"/>
+    <Link to="/" className="nav-link">
+      <img alt="Vue logo" src={logo} width="50px" className="CartLogo"/>
+    </Link>
     </div>
-    <div className='fantasy'  onClick={toLogin}>Pettamo  </div>
+    <Link to="/" className="nav-link">
+      <div className='fantasy' onClick={toLogin} style={{ color: '#521F1E'}}>Pettamo</div>
+    </Link>
     <button
       className="navbar-toggler"
       type="button"
