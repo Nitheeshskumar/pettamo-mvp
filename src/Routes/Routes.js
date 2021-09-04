@@ -10,6 +10,7 @@ const ProviderDetail = React.lazy(()=>import('../Modules/ServiceProvider/Service
 // const Admin = React.lazy(()=>import('../Modules/Admin/Admin'))
 const Appointments = React.lazy(()=>import('../Modules/Appointments/Appointments'))
 const Profile = React.lazy(()=>import('../Modules/Profile/Profile'))
+const Pets = React.lazy(()=>import('../Modules/Pets/PetsContainer'))
 
 const RootRoutes = () => (
     <BrowserRouter>
@@ -32,6 +33,7 @@ const RootRoutes = () => (
                 <RouteGuard path="/detail" xComponent={ProviderDetail} />
                 <RouteGuard path="/appointments" xComponent={Appointments} />
                 <RouteGuard path="/profile" xComponent={Profile} />
+                <RouteGuard path="/pets" xComponent={Pets} />
                 {/* <RouteGuard path="/admin" xComponent={Admin} /> */}
                 <Redirect from="*" to="/dashboard" push />
                 </Switch>

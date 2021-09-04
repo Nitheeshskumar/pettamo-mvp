@@ -47,6 +47,9 @@ const toLogin=()=>history.push('./dashboard')
            <Link to="/appointments"  className="nav-link">Appointments</Link>
         </li>
         <li className="nav-item">
+           <Link to="/pets"  className="nav-link">Pets</Link>
+        </li>
+        <li className="nav-item">
           {/* <a href="/about" className="nav-link">Reach Us</a> */}
           <Link to="/profile"  className="nav-link">Profile</Link>
         </li>
