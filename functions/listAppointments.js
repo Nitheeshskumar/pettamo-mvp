@@ -1,0 +1,25 @@
+const { getCollection } = require("./utils/astraClient");
+
+exports.handler = async (event, context) => {
+  const todos = await getCollection();
+  const body = JSON.parse(event.body);
+  console.log(body)
+  try {
+
+let query={rel_type:  { $eq:'appointment' },rel_id:{ $eq:body.rel_id }}
+if(body.pet){
+    query.pet = { $eq:body.pet }
+}
+
+    const list = await todos.find(query);
+    return {
+      statusCode: 200,
+      body: JSON.stringify(list),
+    };
+  } catch (e) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify(e),
+    };
+  }
+};

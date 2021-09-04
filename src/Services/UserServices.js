@@ -14,14 +14,45 @@ export const createUser = async (body) => {
     const response = await axios.post("/.netlify/functions/authenticate", body);
     return response.data
   };
-  export const getProviders = async (body) => {
-    const response = await axios.post("/.netlify/functions/getProviders", body);
+
+
+
+  //service
+  export const listService = async (body) => {
+    const response = await axios.post("/.netlify/functions/listService", body);
     return response.data
   };
 
-  export const createProvider = async (body) => {
-    const response = await axios.post("/.netlify/functions/createProvider", body);
+  export const createService = async (body) => {
+    const response = await axios.post("/.netlify/functions/createService", body);
     return response.data
   };
+
+//pets
+
+export const listPets = async (body) => {
+  const response = await axios.post("/.netlify/functions/listPets", body);
+  return response.data
+};
+
+export const createPets = async (body) => {
+  const response = await axios.post("/.netlify/functions/createPets", body);
+  return response.data
+};
+
+//appointments
+
+export const listAppointments = async (body) => {
+  const response = await axios.post("/.netlify/functions/listAppointments", body);
+  return response.data
+};
+
+export const createAppointments = async (body) => {
+  const response = await axios.post("/.netlify/functions/createAppointments", body);
+  return response.data
+};
+
+
+
 
 
