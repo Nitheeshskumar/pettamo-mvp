@@ -5,7 +5,7 @@ function ItemRow(props) {
   //   console.log(props);
   //   console.log(Date.toLocaleTimeString);
   console.log(moment(props.el.time).format("D/M/Y hh:mm a"));
-  //   console.log(moment());
+//   console.log(moment());
   //   console.log(moment(now, "DD/MM/YYYY HH:mm:ss")); moment(props.el.time,"D/M/Y hh:mm a").isBefore()
   return (
     <tr>
@@ -61,10 +61,10 @@ function ItemRow(props) {
       )} */}
 
       <td>{props.el.petname}</td>
-      {/* {
-          props.el.time 
-      } */}
-      <td>{props.el.status}</td>
+      {
+        moment(props.el.time,"D/M/Y hh:mm a").isBefore()? <td>Upcomming</td>:<td>Past</td>
+      }
+      {/* <td>{props.el.status}</td> */}
       <td>{props.el.providertype}</td>
     </tr>
   );
