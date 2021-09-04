@@ -32,6 +32,15 @@ function ListContainer(props) {
     let sortedTodos;
 
     switch (e.target.dataset.sortBy) {
+      case "petname":
+        if (sort === "asc") {
+          sortedTodos = sortByNameAsc(props.appointMentsList);
+          setSort("desc");
+        } else {
+          sortedTodos = sortByNameDesc(props.appointMentsList);
+          setSort("asc");
+        }
+        break;
       case "date":
         if (sort === "asc") {
           sortedTodos = sortByDateAsc(props.todos);
@@ -133,7 +142,6 @@ function ListContainer(props) {
           <thead>
             {filter.isMedical === "1" ? (
               <tr className="has-background-link">
-               
                 {/* <th
                   className="has-text-light has-background-link"
                   data-sort-by="date"
@@ -204,7 +212,14 @@ function ListContainer(props) {
                 <th className="has-text-light has-background-link">
                   Serviceprovider Name
                 </th>
-                <th className="has-text-light has-background-link">Pet Name</th>
+                <th
+                  className="has-text-light has-background-link"
+                  className="has-text-light has-background-link"
+                  data-sort-by="petname"
+                  onClick={handleSort}
+                >
+                  Pet Name
+                </th>
 
                 <th className="has-text-light has-background-link">Status</th>
                 <th className="has-text-light has-background-link">
@@ -214,16 +229,6 @@ function ListContainer(props) {
               </tr>
             )}
           </thead>
-          {/* <thead>
-            <tr>
-              <th>Booking Type</th>
-              <th>Vet/service</th>
-              <th>Date & Time</th>
-              <th>Status</th>
-              <th>Pet</th>
-              <th>Info</th>
-            </tr>
-          </thead> */}
           <tbody>
             {/* {[...props.todos.values()].reverse().map(item =>
                         item.name.toLowerCase().includes(search) && filter.includes(item.status)&& !item.isDeleted &&
