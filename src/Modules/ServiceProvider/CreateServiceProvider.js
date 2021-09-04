@@ -4,7 +4,8 @@ import uuid from "node-uuid";
 import { createUser } from '../Services/UserServices';
 import Toast, { toastError, toastSuccess ,toaster} from '../Components/Toast';
 
-const Signup=({setIsSignup})=>{
+const CreatePet=({setIsSignup})=>{
+    const { loginState } = React.useContext(GlobalContext);
   const Email = React.useRef('')
 const Pswd = React.useRef('')
 const Name= React.useRef('')
@@ -20,11 +21,12 @@ if(!valPswd(Pswd.current.value)){
 }
     const payload={
       name:Name.current.value,
-      email:Email.current.value,
-      password:Pswd.current.value,
+      dob:Email.current.value,
+      gender:Pswd.current.value,
       id:uuid.v1(),
-      pets:[],
-      rel_type:'owner'
+      color:'',
+      rel_type:'pet',
+      rel_id:loginState.userDetails.id
     }
 
 //     toast.promise(createUser(payload), {
@@ -57,7 +59,7 @@ if(!valPswd(Pswd.current.value)){
             type="text"
             className="form-control"
             id="userName"
-            placeholder="User Name"
+            placeholder="Pet Name"
   ref={Name}
             required
           />
@@ -100,6 +102,6 @@ if(!valPswd(Pswd.current.value)){
   </div>
 }
 
-export default Signup
+export default CreatePet
 
 
