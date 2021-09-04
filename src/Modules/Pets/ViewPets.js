@@ -1,7 +1,7 @@
 import moment from 'moment'
 import calculateAge from 'calculate-age'
 import CardsTemplate from './CardsTemplate'
-import M from 'minimatch'
+// import M from 'minimatch'
 
 
 const ViewPets=(data)=>{
@@ -10,7 +10,7 @@ const ViewPets=(data)=>{
     const getAge = (data) => {
         const today = moment().format('YYYY-MM-DD')
         const dob = moment(data).format('YYYY-MM-DD')
-        
+
         const age = new calculateAge(dob, today).getObject()
         console.log(age)
 
@@ -44,7 +44,7 @@ const ViewPets=(data)=>{
             )}
         </div>
     </div>
-    
+
     return PetList()
 }
 export default ViewPets
