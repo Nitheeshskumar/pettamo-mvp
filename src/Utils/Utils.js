@@ -47,11 +47,11 @@ export function sortByDateDesc(todos) {
 }
 
 export function sortByNameAsc(todos) {
-    return todos.sort((a, b) => a.name > b.name ? 1 : -1);
+    return todos.sort((a, b) => a.petname > b.petname ? 1 : -1);
 }
 
 export function sortByNameDesc(todos) {
-    return todos.sort((a, b) => a.name > b.name ? -1 : 1);
+    return todos.sort((a, b) => a.petname > b.petname ? -1 : 1);
 }
 
 export function sortByPriorityAsc(todos) {

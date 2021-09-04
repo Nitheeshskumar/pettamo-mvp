@@ -61,12 +61,10 @@ function ItemRow(props) {
       )} */}
 
       <td>{props.el.petname}</td>
-
       {/* {
           props.el.time
       } */}
       <td>{moment(props.el.time).isBefore() ? "Completed" : "Upcoming"}</td>
-
       <td>{props.el.providertype}</td>
     </tr>
   );
