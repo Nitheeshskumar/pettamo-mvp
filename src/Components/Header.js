@@ -24,13 +24,13 @@ React.useEffect(()=>{
 const toLogin=()=>history.push('./dashboard')
     return     <nav className="navbar navbar-expand-lg navbar-light" id="nav" style={{background: '#FDF5E5'}}>
     <div className="imagecontainer" onClick={toLogin}>
-    <a href="/">
+    <Link to="/">
       <img alt="Vue logo" src={logo} width="50px" className="CartLogo"/>
-    </a>
+    </Link>
     </div>
-    <a href="/">
+    <Link to="/">
       <div className='fantasy' onClick={toLogin} style={{ color: '#521F1E'}}>Pettamo</div>
-    </a>
+    </Link>
     <button
       className="navbar-toggler"
       type="button"
