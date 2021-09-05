@@ -66,7 +66,7 @@ The backend codes are written in **functions/** folder
   * This data model acheived full scalability still having a relation to perform some of the comple queries without having to add multiple tables
 
 
-<img src="https://github.com/Nitheeshskumar/pettamo-mvp/blob/readme/readme/schema.png" alt="solution-architecture" />
+<img src="https://github.com/Nitheeshskumar/pettamo-mvp/blob/readme/readme/schema.png" alt="schema" />
 ### Credits
 
 * The contents of this repo are based on [Jake's port](https://github.com/tjake/todo-astra-react-serverless/) of the [TodoMVC code](https://github.com/tastejs/todomvc/tree/master/examples/react) originally written by [Pete Hunt](https://github.com/petehunt)
