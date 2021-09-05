@@ -10,6 +10,10 @@ This project is submitted for Build Modern Data App Hackathon. Link to [**Live D
 
 Our humble and super bare minimum MVP is using the Netlify's functions (serverless) feature to talk to the API layer of the AstraDB - to save us lots of time doing laborious backend plumbing work. For the API layer, we've chosen the Stargate document API to interact with AstraDB's Cassandra database since the devs are mostly coming from MongoDB realm. Furthermore, we've only used a single collection to bring up the MVP fast - a tradeoff that we agreed to enable us to present the video demo of our working product on time.
 
+### Architecture with AstraDB
+
+<img src="https://github.com/Nitheeshskumar/pettamo-mvp/blob/readme/readme/solution-architecture.png" alt="solution-architecture" />
+
 ## Getting Started Locally
 
 ```shell
@@ -41,10 +45,6 @@ npm run dev
 | **src**/**Routes**                 | js handling routes and guarding unauthorized req             |
 | **src**/**Services**               | axios config and handling                                    |
 | **src**/**Utils**                  | some utility functions                                       |
-
-### Architecture with AstraDB
-
-<img src="https://github.com/Nitheeshskumar/pettamo-mvp/blob/readme/readme/solution-architecture.png" alt="solution-architecture" />
 
 ### Credits
 
