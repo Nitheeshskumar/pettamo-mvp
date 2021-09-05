@@ -30,18 +30,18 @@ npm run dev
 
 | Name                               | Description                                                  |
 | ---------------------------------- | ------------------------------------------------------------ |
-| **functions**/                     | user account management.                                     |
-| **functions**/**utils**            | config astra client.                                         |
-| **public**/                        | Static files.                                                |
-| **src**/                           | place for main working code.                                 |
-| **src**/index.js                   | entry clientside.                                            |
-| **src**/**Assets**                 | static assets.                                               |
-| **src**/**Components**             | components used in the app.                                  |
-| **src**/**ContextStore**           | Global Data.                                                 |
-| **src**/**Modules**                | sub-components used in components.                           |
-| **src**/**Routes**                 | JS handling routes and guarding unauthorized req.            |
-| **src**/**Services**               | axios config and handling.                                   |
-| **src**/**Utils**                  | some utility functions.                                      |
+| **functions**/                     | user account management                                      |
+| **functions**/**utils**            | config astra client                                          |
+| **public**/                        | Static files                                                 |
+| **src**/                           | place for main working code                                  |
+| **src**/index.js                   | entry clientside                                             |
+| **src**/**Assets**                 | static assets                                                |
+| **src**/**Components**             | components used in the app                                   |
+| **src**/**ContextStore**           | Global Data                                                  |
+| **src**/**Modules**                | sub-components used in components                            |
+| **src**/**Routes**                 | JS handling routes and guarding unauthorized req             |
+| **src**/**Services**               | axios config and handling                                    |
+| **src**/**Utils**                  | some utility functions                                       |
 
 ### What and how does project leverage Astra DB
 
