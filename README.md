@@ -43,7 +43,9 @@ npm run dev
 | **src**/**Services**               | axios config and handling                                    |
 | **src**/**Utils**                  | some utility functions                                       |
 
+### how does project leverage Astra DB
 
+<img src="https://github.com/Nitheeshskumar/pettamo-mvp/blob/readme/readme/solution-architecture.png" alt="solution-architecture" />
 
 ### Credits
 
