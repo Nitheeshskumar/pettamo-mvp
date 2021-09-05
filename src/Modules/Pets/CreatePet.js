@@ -56,14 +56,14 @@ const handleChange=e=>{
   const AddPetForm = () =>
   <>
     <form onSubmit={handleAddPet}>
-      <div className="form-group row">
+      <div className="form-group row mt-5">
         <label htmlFor="name" className="col-sm-2 col-form-label">Name</label>
         <div className="col-sm-10">
           <input type="text" id="name" name="name" className="form-control" value={data.name} onChange={handleChange} required/>
         </div>
       </div>
       <div className="form-group row mt-3">
-        <label htmlFor="birthdate" className="col-sm-2 col-form-label">Birthdate</label>
+        <label htmlFor="birthdate" className="col-sm-2 col-form-label">Birth Date</label>
         <div className="col-sm-10">
           <DateField handleChange={handleBirthdate} />
         </div>

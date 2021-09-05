@@ -26,7 +26,7 @@ authenticate(payload)
   setTimeout(() => {
     dispatch({type:'login',payload:res})
     ManageLocalStorage.set('userDetails',res)
-    history.replace('/dashboard')
+    history.replace('/pets')
   }, 500);
 
 }).catch(e=>{
