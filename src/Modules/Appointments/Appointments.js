@@ -1,14 +1,15 @@
 import React from "react";
 import { toaster } from "../../Components/Toast";
-import { GlobalDispatchContext } from "../../ContextStore/ContextAPI";
+import { GlobalContext, GlobalDispatchContext } from "../../ContextStore/ContextAPI";
 import { listAppointments } from "../../Services/UserServices";
 import DataTable from "./DataTable";
 
 const Appointments = () => {
 const [appointMentsList,setAppointMents]=React.useState([])
 const dispatch = React.useContext(GlobalDispatchContext)
+const { loginState } = React.useContext(GlobalContext);
 const loadApointments=(body)=>{
-  let payload=body
+  let payload={...body,rel_id:loginState.userDetails.id }
 
   dispatch({type:'loader',payload:true})
 
