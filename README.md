@@ -1,6 +1,6 @@
 # Pettamo
 
-A web app for online vet consultations & verified pet care services to better care for your pets.
+A web app for online vet consultations & verified pet care services to better care for your pets :dog::cat:
 
 <img src="https://github.com/Nitheeshskumar/pettamo-mvp/blob/readme/readme/image.png" alt="image" />
 
