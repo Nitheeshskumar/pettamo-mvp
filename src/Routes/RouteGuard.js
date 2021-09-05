@@ -10,7 +10,6 @@ const RootRouteGuard = ({ xComponent: Component, ...xProps }) => {
       {...xProps}
       render={routeParams => {
         const pathName = routeParams.match.path;
-        // return <Component {...routeParams} key={routeParams.match.url} />;
         if (loginState.isLoggedIn) {
           if (pathName === '/login') {
             return <Redirect to="/dashboard" />;

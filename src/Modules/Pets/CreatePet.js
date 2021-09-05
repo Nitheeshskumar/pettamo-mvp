@@ -46,8 +46,6 @@ const handleChange=e=>{
       toaster.error(e?.response?.data)
     })
 
-    // TODO: perform write to backend
-    // TODO: show confirmation
   }
 
   const handleBirthdate = (evt) => {

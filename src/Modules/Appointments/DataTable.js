@@ -13,14 +13,10 @@ import {
 } from "../../Utils/Utils";
 
 function ListContainer(props) {
-  // const [search, setSearch] = useState("");
+
   const [sort, setSort] = useState("asc");
   const [filter, setFilter] = useState('Medical');
 
-  // search todos by name
-  // const handleSearch = (e) => {
-  //   setSearch(e.target.value);
-  // };
   const handleChange = (e) => {
 
       setFilter( e.target.value);

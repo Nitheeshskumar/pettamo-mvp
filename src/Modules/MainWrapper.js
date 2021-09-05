@@ -17,8 +17,7 @@ const MainWrapper = props => {
    {loginState.isLoggedIn && <Header/>}
 
     {children}
-    {/* {loginState && loginState.isLoggedIn ? (<>
-     <Header/>{children}</>):children} */}
+
     </main>
   </div>
     </>}

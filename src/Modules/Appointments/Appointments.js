@@ -28,36 +28,7 @@ const loadApointments=(body)=>{
     loadApointments({serviceType:'Medical'})
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
-  // const dummy=[
-  //   {
-  //     time: 1630749867253,
-  //     serviceProviderName: "test name",
-  //     petName: "tony",
-  //     status: "pending",
-  //     providertype: "Medical",
-  //   },
-  //   {
-  //     time: 1240749567253,
-  //     serviceProviderName: "test name1",
-  //     petname: "tony1",
-  //     status: "pending",
-  //     providertype: "Non-Medical",
-  //   },
-  //   {
-  //     time: 1640949867253,
-  //     serviceProviderName: "test name1",
-  //     petname: "tony2",
-  //     status: "pending",
-  //     providertype: "Non-Medical",
-  //   },
-  //   {
-  //     time: 1640799867293,
-  //     serviceProviderName: "test name1",
-  //     petname: "tony",
-  //     status: "pending",
-  //     providertype: "Non-Medical",
-  //   },
-  // ]
+
   return (
     <DataTable
       appointMentsList={appointMentsList}

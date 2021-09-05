@@ -7,7 +7,7 @@ import MainWrapper from '../Modules/MainWrapper';
 const Login = React.lazy(()=>import('../Modules/Login'))
 const ServiceProviderContainer = React.lazy(()=>import('../Modules/ServiceProvider/ServiceProviderContainer'))
 const ProviderDetail = React.lazy(()=>import('../Modules/ServiceProvider/ServiceProviderDetail'))
-// const Admin = React.lazy(()=>import('../Modules/Admin/Admin'))
+
 const Appointments = React.lazy(()=>import('../Modules/Appointments/Appointments'))
 const Profile = React.lazy(()=>import('../Modules/Profile/Profile'))
 const Pets = React.lazy(()=>import('../Modules/Pets/PetsContainer'))
@@ -36,7 +36,6 @@ const RootRoutes = () => (
                 <RouteGuard path="/profile" xComponent={Profile} />
                 <RouteGuard path="/pets" xComponent={Pets} />
                 <RouteGuard path="/createservice" xComponent={CreateService} />
-                {/* <RouteGuard path="/admin" xComponent={Admin} /> */}
                 <Redirect from="*" to="/dashboard" push />
                 </Switch>
           </React.Suspense>

@@ -21,20 +21,6 @@ isLicensed:data.isLicensed?true:false,
       rel_type:'provider',
 
     }
-    console.log(payload)
-// const payload={
-//   petType:'Dogs',
-//         imgUrl:'https://thumbs.dreamstime.com/b/dog-veterinary-clinic-veterinarian-staff-examine-dogs-health-adoption-92643875.jpg',
-//         time:'Afternoon',
-//         name:'Global Dog Palace',
-//         description:' place for your puppies',
-//         serviceType:'Medical',
-//         location:'Ohio',
-//         isLicensed:true,
-//         id:uuid.v1(),
-//         rel_type:'provider',
-
-//       }
 dispatch({type:'loader',payload:true})
  createService(payload).then(res=>{
    console.log(res);
