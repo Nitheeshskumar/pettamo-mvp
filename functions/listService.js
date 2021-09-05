@@ -1,7 +1,7 @@
 const { getCollection } = require("./utils/astraClient");
 
 exports.handler = async (event, context) => {
-  const todos = await getCollection();
+  const data = await getCollection();
   const body = JSON.parse(event.body);
   console.log(body)
   try {
@@ -18,7 +18,7 @@ if(body.serviceType){
 
 
 
-    const list = await todos.find( query);
+    const list = await data.find( query);
     return {
       statusCode: 200,
       body: JSON.stringify(list),

@@ -1,11 +1,11 @@
 const { getCollection } = require("./utils/astraClient");
 
 exports.handler = async (event, context) => {
-  const todos = await getCollection();
+  const data = await getCollection();
   const body = JSON.parse(event.body);
   console.log(body)
   try {
-    const user = await todos.findOne({ email: { $eq: body.email }});
+    const user = await data.findOne({ email: { $eq: body.email }});
     console.log(user)
     if(!user){
       return {
@@ -19,7 +19,6 @@ exports.handler = async (event, context) => {
         body: JSON.stringify("Password is wrong"),
       };
     }
-    // const list = await todos.get( `${body.id}/tasks`);
     return {
       statusCode: 200,
       body: JSON.stringify(user),

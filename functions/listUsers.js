@@ -2,10 +2,10 @@ const { getCollection } = require("./utils/astraClient");
 
 exports.handler = async (event, context) => {
   const body = event.body;
-  const todos = await getCollection();
+  const data = await getCollection();
 
   try {
-    const admin = await todos.findOne({ isAdmin: { $eq: 'true' }});
+    const admin = await data.findOne({ isAdmin: { $eq: 'true' }});
     const isAdmin = admin.password===body
     if(!isAdmin){
       return {
@@ -13,7 +13,7 @@ exports.handler = async (event, context) => {
         body: 'Not Authorized',
       };
     }
-    const res = await todos.find({});
+    const res = await data.find({});
     const list = Object.keys(res).map(el=>res[el])
     return {
       statusCode: 200,
