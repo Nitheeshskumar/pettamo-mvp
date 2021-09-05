@@ -43,9 +43,7 @@ npm run dev
 | **src**/**Services**               | axios config and handling                                    |
 | **src**/**Utils**                  | some utility functions                                       |
 
-### What and how does project leverage Astra DB
 
-### Quick steps about where to look for how you have used Astra DB for judges
 
 ### Credits
 
