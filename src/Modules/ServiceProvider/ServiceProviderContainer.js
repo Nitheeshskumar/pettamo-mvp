@@ -1,6 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router'
 import { toaster, toastError, toastSuccess } from '../../Components/Toast'
+import { GlobalDispatchContext } from '../../ContextStore/ContextAPI'
 import { listService } from '../../Services/UserServices'
 import Filters from './Filters'
 import ServiceProviderList from './ServiceProviderList'
@@ -11,6 +12,7 @@ const ServiceProviderContainer=()=>{
 const history =useHistory()
 
 const [providerList,setProviderList]=React.useState([])
+const dispatch = React.useContext(GlobalDispatchContext)
 const [filter,setFilter]=React.useState({})
   const handleDetail=item=>{
     console.log('sdf')
@@ -23,15 +25,20 @@ const [filter,setFilter]=React.useState({})
       petType:filter.petType&&filter.petType!=='All'?filter.petType:undefined,
       time:filter.time&&filter.time!=='All'?filter.time:undefined
     }
-
-    let id = toaster.loading("Getting List...")
+    dispatch({type:'loader',payload:true})
+    // let id = toaster.loading("Getting List...")
     listService(payload).then(res=>{
-      toastSuccess(id, 'List Loaded 👌');
+      dispatch({type:'loader',payload:false})
+      toaster.success("List Loaded...")
+      // toastSuccess(id, 'List Loaded 👌');
 
       const list = Object.keys(res).map(el=>res[el])
 
       setProviderList(list)
-    }).catch(e=>toastError(id,e.response.data + '🤯'))
+    }).catch(e=>{
+      toaster.error(e?.response?.data)
+      // toastError(id,e.response.data + '🤯')
+    })
   }
   // React.useEffect(()=>{
   //   loadProviders()

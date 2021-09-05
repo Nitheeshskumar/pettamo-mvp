@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../Components/Header';
 import Toast from '../Components/Toast';
+import Loader from '../Components/Loader';
 
 const MainWrapper = props => {
     const { children } = props;
@@ -11,7 +12,7 @@ const MainWrapper = props => {
 
      <div id="app" className="container width100">
     <main>
-<Toast/>
+<Toast/><Loader/>
     <Header/>{children}
     {/* {loginState && loginState.isLoggedIn ? (<>
      <Header/>{children}</>):children} */}

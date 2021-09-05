@@ -33,6 +33,11 @@ const rootReducer = (state , action = {}) => {
         petsList: action.payload
         }
   }
+  if(action.type==='loader'){
+    return {...state,
+      isLoading: action.payload
+      }
+}
     return { ...state };
 }
     export default rootReducer;

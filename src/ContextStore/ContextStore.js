@@ -14,9 +14,7 @@ const ContextStore = ({ children }) => {
       userDetails: userDetails || {},
       isLoggedIn: !!userDetails.email,
     },
-    loadingState: {
-      isLoading: false
-    },
+      isLoading: false,
     petsList
   };
 

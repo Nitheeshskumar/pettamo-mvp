@@ -6,6 +6,7 @@ import SelectField from '../../Components/SelectField'
 import { toaster, toastError, toastSuccess } from '../../Components/Toast'
 import { GlobalContext } from '../../ContextStore/ContextAPI'
 import { createAppointments, listPets } from '../../Services/UserServices'
+import uuid from "node-uuid";
 
 const ServiceProviderDetail=()=>{
   const location =useLocation()
@@ -37,6 +38,7 @@ const payload ={
   serviceProviderName:details.name,
   rel_type:'appointment',
   rel_id:loginState.userDetails.id,
+  id:uuid.v4()
 
 }
 console.log(payload)
