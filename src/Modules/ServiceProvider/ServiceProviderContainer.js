@@ -1,6 +1,6 @@
 import React from 'react'
 import { useHistory } from 'react-router'
-import { toaster, toastError, toastSuccess } from '../../Components/Toast'
+import { toaster } from '../../Components/Toast'
 import { GlobalDispatchContext } from '../../ContextStore/ContextAPI'
 import { listService } from '../../Services/UserServices'
 import Filters from './Filters'
@@ -40,9 +40,10 @@ const [filter,setFilter]=React.useState({})
       // toastError(id,e.response.data + '🤯')
     })
   }
-  // React.useEffect(()=>{
-  //   loadProviders()
-  // },[])
+  React.useEffect(()=>{
+    loadProviders()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
     return  <div className="products">
     <div className="row">
     <div className="col-md-3 order-md-1 mb-4">

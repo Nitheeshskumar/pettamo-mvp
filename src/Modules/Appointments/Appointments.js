@@ -1,25 +1,31 @@
 import React from "react";
-import { toaster, toastError, toastSuccess } from "../../Components/Toast";
+import { toaster } from "../../Components/Toast";
+import { GlobalDispatchContext } from "../../ContextStore/ContextAPI";
 import { listAppointments } from "../../Services/UserServices";
 import DataTable from "./DataTable";
 
 const Appointments = () => {
 const [appointMentsList,setAppointMents]=React.useState([])
-
+const dispatch = React.useContext(GlobalDispatchContext)
 const loadApointments=(body)=>{
   let payload=body
-  let id = toaster.loading("Loading List...")
+
+  dispatch({type:'loader',payload:true})
+
   listAppointments(payload).then(res=>{
-   toastSuccess(id,'Loaded 👌');
+    dispatch({type:'loader',payload:false})
+    toaster.success("List Loaded...")
    const list = Object.keys(res).map(el=>res[el])
    setAppointMents(list)
 
  }).catch(e=>{
-   toastError(id,e?.response?.data + '🤯')
+  dispatch({type:'loader',payload:false})
+  toaster.error(e?.response?.data)
  })
 }
   React.useEffect(()=>{
     loadApointments({serviceType:'Medical'})
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
   // const dummy=[
   //   {

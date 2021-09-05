@@ -3,7 +3,7 @@ import loginimg from '../Assets/astronaut.png'
 import { useHistory } from "react-router-dom";
 // import Alert from './Components/Alert'
 import Signup from './Signup';
-import {toaster, toastError, toastSuccess} from '../Components/Toast';
+import {toaster} from '../Components/Toast';
 import { authenticate } from '../Services/UserServices';
 import { ManageLocalStorage } from '../Utils/ManageLocalStorage';
 import { GlobalDispatchContext } from '../ContextStore/ContextAPI';
@@ -18,17 +18,21 @@ const getFname=name=> 'Hello '+name.split(' ')[0]
 const handleSubmit=(e)=>{
   const payload={email:Email.current.value,password:Pswd.current.value}
 e.preventDefault()
-let id = toaster.loading("Logging in...")
+dispatch({type:'loader',payload:true})
 authenticate(payload)
 .then(res=>{
-  toastSuccess(id,getFname(res.name) + '👌')
+  dispatch({type:'loader',payload:false})
+  toaster.success(getFname(res.name) + '👌')
   setTimeout(() => {
     dispatch({type:'login',payload:res})
     ManageLocalStorage.set('userDetails',res)
     history.replace('/dashboard')
   }, 500);
 
-}).catch(e=>toastError(id,e.response.data + '🤯'))
+}).catch(e=>{
+  dispatch({type:'loader',payload:false})
+  toaster.error(e.response.data)
+})
 
 }
 
@@ -73,7 +77,7 @@ authenticate(payload)
 }
         <p className="mt-3 text-muted">
 
-          {isSignUp?'Already a member':'New to platform?' }
+          {isSignUp?'I have already joined ':"If you haven't joined" }
             <span className='link' onClick={()=>setIsSignup(state=>!state)}> {isSignUp?'Sign in':'Create an Account' } </span>
 
         </p>

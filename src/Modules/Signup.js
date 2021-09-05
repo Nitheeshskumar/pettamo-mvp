@@ -2,12 +2,14 @@ import React from 'react'
 import loginimg from '../Assets/astronaut.png'
 import uuid from "node-uuid";
 import { createUser } from '../Services/UserServices';
-import Toast, { toastError, toastSuccess ,toaster} from '../Components/Toast';
+import  {toaster} from '../Components/Toast';
+import { GlobalDispatchContext } from '../ContextStore/ContextAPI';
 
 const Signup=({setIsSignup})=>{
   const Email = React.useRef('')
 const Pswd = React.useRef('')
 const Name= React.useRef('')
+const dispatch = React.useContext(GlobalDispatchContext)
 const valPswd=pswd=>{
  return Boolean (/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.exec(pswd))
 }
@@ -25,13 +27,15 @@ if(!valPswd(Pswd.current.value)){
       id:uuid.v1(),
       rel_type:'owner'
     }
- const id = toaster.loading("Creating User...")
+    dispatch({type:'loader',payload:true})
+
  createUser(payload).then(res=>{
-   console.log(res);
-   toastSuccess(id,'User Created. Login to Continue 👌');
+   toaster.success("Login to Continue...")
+   dispatch({type:'loader',payload:false})
       setIsSignup(false)
     }).catch(e=>{
-      toastError(id,e.response.data + '🤯')
+      dispatch({type:'loader',payload:false})
+      toaster.error(e?.response?.data)
     })
   }
 
@@ -72,13 +76,21 @@ if(!valPswd(Pswd.current.value)){
         <div className="col-md mb-3 text-start lh-sm">
           <input
             type="text"
-            className="form-control"
+            className="form-control mb-3"
             id="act-password"
             placeholder="New password"
             required
             ref={Pswd}
          />
-        <span className="notes">Password should be Minimum eight characters, at least one letter, one number and one special character</span>
+        <span className="notes">Password should contain
+        <ul>
+          <li> Minimum eight characters </li>
+          <li> At least one letter </li>
+          <li> At least one number </li>
+          <li> At least one special character </li>
+        </ul>
+
+        </span>
           <div className="invalid-feedback">Valid Password is required.</div>
         </div>
       </div>
@@ -86,7 +98,6 @@ if(!valPswd(Pswd.current.value)){
        Sign Up
       </button>
     </form>
-    <Toast/>
   </div>
 }
 

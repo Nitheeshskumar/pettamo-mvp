@@ -2,24 +2,26 @@ import CreatePet from "./CreatePet"
 import ViewPets from "./ViewPets"
 import React from 'react'
 import { listPets } from "../../Services/UserServices"
-import { toaster, toastError, toastSuccess } from "../../Components/Toast"
-import { GlobalContext } from "../../ContextStore/ContextAPI"
+import { toaster } from "../../Components/Toast"
+import { GlobalContext, GlobalDispatchContext } from "../../ContextStore/ContextAPI"
 
 
 const PetsContainer=()=>{
     const { loginState } = React.useContext(GlobalContext);
     const [petList,setPetList]=React.useState([])
-
+    const dispatch = React.useContext(GlobalDispatchContext)
 
 const loadPets=()=>{
-    let id = toaster.loading("Loading Pets...")
+    dispatch({type:'loader',payload:true})
     listPets({rel_id: loginState.userDetails.id}).then(res=>{
-     toastSuccess(id,'Loaded 👌');
+        dispatch({type:'loader',payload:false})
+        toaster.success("List Loaded...")
      const list = Object.keys(res).map(el=>res[el])
      setPetList(list)
 
    }).catch(e=>{
-     toastError(id,e?.response?.data + '🤯')
+    dispatch({type:'loader',payload:false})
+    toaster.error(e?.response?.data)
    })
 }
     React.useEffect(()=>{

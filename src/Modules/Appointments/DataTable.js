@@ -128,48 +128,24 @@ function ListContainer(props) {
           style={{ whiteSpace: "nowrap", overflow: "auto" }}
         >
           <thead>
-            {filter === "Medical" ? (
+
               <tr className="has-background-link">
 
-                <th className="has-text-light has-background-link">
+                <th className="has-text-light has-background-link" onClick={handleSort}>
                   Date&Time
                 </th>
-                <th className="has-text-light has-background-link">
-                  Serviceprovider Name
+                <th className="has-text-light has-background-link" onClick={handleSort}>
+                  Service Provider
                 </th>
-                <th className="has-text-light has-background-link">Pet Name</th>
+                <th className="has-text-light has-background-link" onClick={handleSort}>Pet Name</th>
 
-                <th className="has-text-light has-background-link">Status</th>
-                <th className="has-text-light has-background-link">
-                  Owner Comment
+                <th className="has-text-light has-background-link" onClick={handleSort}>Status</th>
+                <th className="has-text-light has-background-link" onClick={handleSort}>
+                  Service Type
                 </th>
-                <th className="has-text-light has-background-link"></th>
+                <th className="has-text-light has-background-link">  {filter === "Medical" ? 'Link to join':'Remarks'}  </th>
               </tr>
-            ) : (
-              <tr>
 
-
-                <th className="has-text-light has-background-link" onClick={handleSort} data-sort-by="time">
-                  Date&Time
-                </th>
-                <th className="has-text-light has-background-link"  onClick={handleSort} data-sort-by="serviceProviderName">
-                  Serviceprovider Name
-                </th>
-                <th
-                  className="has-text-light has-background-link"
-                  data-sort-by="petname"
-                  onClick={handleSort}
-                >
-                  Pet Name
-                </th>
-
-                <th className="has-text-light has-background-link" onClick={handleSort} data-sort-by="time">Status</th>
-                {/* <th className="has-text-light has-background-link" onClick={handleSort} data-sort-by="providertype">
-                  Provider Type
-                </th> */}
-                <th className="has-text-light has-background-link"> Link</th>
-              </tr>
-            )}
           </thead>
           <tbody>
 

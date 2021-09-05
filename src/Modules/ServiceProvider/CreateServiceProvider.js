@@ -2,14 +2,15 @@ import React from 'react'
 
 import uuid from "node-uuid";
 
-import Toast, { toastError, toastSuccess ,toaster} from '../../Components/Toast';
+import  {  toaster} from '../../Components/Toast';
 
 import { createService } from '../../Services/UserServices';
+import { GlobalDispatchContext } from '../../ContextStore/ContextAPI';
 
 const CreatePet=()=>{
 
 const [data,setData]=React.useState({})
-
+const dispatch = React.useContext(GlobalDispatchContext)
   const handleSignup=(e)=>{
     e.preventDefault()
 
@@ -34,13 +35,14 @@ isLicensed:data.isLicensed?true:false,
 //         rel_type:'provider',
 
 //       }
-
- let id = toaster.loading("Creating Service...")
+dispatch({type:'loader',payload:true})
  createService(payload).then(res=>{
    console.log(res);
-   toastSuccess(id,'Created 👌');
+   dispatch({type:'loader',payload:false})
+   toaster.success('Created !');
     }).catch(e=>{
-      toastError(id,e?.response?.data + '🤯')
+      dispatch({type:'loader',payload:false})
+      toaster.error(e?.response?.data)
     })
   }
 
@@ -162,7 +164,7 @@ isLicensed:data.isLicensed?true:false,
        Create
       </button>
     </form>
-    <Toast/>
+    {/* <Toast/> */}
   </div>
 }
 

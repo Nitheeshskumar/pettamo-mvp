@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import uuid from "node-uuid";
-import { GlobalContext } from '../../ContextStore/ContextAPI';
-import  { toastError, toastSuccess ,toaster} from '../../Components/Toast';
+import { GlobalContext, GlobalDispatchContext } from '../../ContextStore/ContextAPI';
+import  { toaster} from '../../Components/Toast';
 import DateField from '../../Components/DateField';
 import SelectField from '../../Components/SelectField';
 import { createPets } from '../../Services/UserServices';
 
 const CreatePet=({setPetList})=>{
   const { loginState } = React.useContext(GlobalContext);
-
+  const dispatch = React.useContext(GlobalDispatchContext)
 
 
   const [birthdate, setBirthdate] = useState(null)
@@ -32,16 +32,18 @@ const handleChange=e=>{
     }
 
     console.log('data: ', payload)
+    dispatch({type:'loader',payload:true})
 
-     let id = toaster.loading("Creating Pets...")
      createPets(payload).then(res=>{
-      toastSuccess(id,'Created 👌');
+      dispatch({type:'loader',payload:false})
+      toaster.success("Created !")
       setData({gender:'Female'})
       const list = Object.keys(res).map(el=>res[el])
       setPetList(list)
 
     }).catch(e=>{
-      toastError(id,e?.response?.data + '🤯')
+      dispatch({type:'loader',payload:false})
+      toaster.error(e?.response?.data)
     })
 
     // TODO: perform write to backend

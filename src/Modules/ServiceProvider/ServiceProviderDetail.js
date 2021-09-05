@@ -3,8 +3,8 @@ import { useHistory, useLocation } from 'react-router'
 import DateField from '../../Components/DateField'
 import ModalPopup from '../../Components/ModalPopup'
 import SelectField from '../../Components/SelectField'
-import { toaster, toastError, toastSuccess } from '../../Components/Toast'
-import { GlobalContext } from '../../ContextStore/ContextAPI'
+import { toaster } from '../../Components/Toast'
+import { GlobalContext, GlobalDispatchContext } from '../../ContextStore/ContextAPI'
 import { createAppointments, listPets } from '../../Services/UserServices'
 import uuid from "node-uuid";
 
@@ -14,7 +14,7 @@ const ServiceProviderDetail=()=>{
   const details = location.state
   const [show,setShow]=React.useState(false)
   const [birthdate, setBirthdate] = React.useState(null)
-
+  const dispatch = React.useContext(GlobalDispatchContext)
   const { loginState } = React.useContext(GlobalContext);
   const [petList,setPetList]=React.useState([])
 
@@ -42,13 +42,15 @@ const payload ={
 
 }
 console.log(payload)
- let id = toaster.loading("Creating Appointment...")
+dispatch({type:'loader',payload:true})
      createAppointments(payload).then(res=>{
-      toastSuccess(id,'Created 👌');
+      dispatch({type:'loader',payload:false})
+      toaster.success("Created !")
       handleClose()
 
     }).catch(e=>{
-      toastError(id,e?.response?.data + '🤯')
+      dispatch({type:'loader',payload:false})
+      toaster.error(e?.response?.data)
     })
 }
 const handleBirthdate = (evt) => {
