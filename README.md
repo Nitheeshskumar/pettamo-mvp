@@ -38,7 +38,7 @@ npm run dev
 | **src**/**Assets**                 | static assets                                                |
 | **src**/**Components**             | components used in the app                                   |
 | **src**/**ContextStore**           | Global Data                                                  |
-| **src**/**Modules**                | sub-components used in components                            |
+| **src**/**Modules**                | sub-components used in pages                                 |
 | **src**/**Routes**                 | JS handling routes and guarding unauthorized req             |
 | **src**/**Services**               | axios config and handling                                    |
 | **src**/**Utils**                  | some utility functions                                       |
