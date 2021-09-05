@@ -32,14 +32,14 @@ npm run dev
 | ---------------------------------- | ------------------------------------------------------------ |
 | **functions**/                     | user account management                                      |
 | **functions**/**utils**            | config astra client                                          |
-| **public**/                        | Static files                                                 |
-| **src**/                           | place for main working code                                  |
-| **src**/index.js                   | entry clientside                                             |
+| **public**/                        | static files                                                 |
+| **src**/                           | place for working code                                       |
+| **src**/index.js                   | entrypoint                                                   |
 | **src**/**Assets**                 | static assets                                                |
 | **src**/**Components**             | components used in the app                                   |
-| **src**/**ContextStore**           | Global Data                                                  |
+| **src**/**ContextStore**           | global data                                                  |
 | **src**/**Modules**                | sub-components used in pages                                 |
-| **src**/**Routes**                 | JS handling routes and guarding unauthorized req             |
+| **src**/**Routes**                 | js handling routes and guarding unauthorized req             |
 | **src**/**Services**               | axios config and handling                                    |
 | **src**/**Utils**                  | some utility functions                                       |
 
