@@ -1,15 +1,30 @@
 # Pettamo
 
 **Live Demo**: <https://pettamo.netlify.app/>
+</n>
 **Video Pitch**: <https://www.youtube.com/watch?v=fvX_XDb5HnU>
 
 ## Objectives
 
 * Provide a fullstack development example using Astra DB as the storage backend
 
-JAMstack + Netlify + Cassandra + React + Bootstrap
+  JAMstack + Netlify + Cassandra + React + Bootstrap
 
-### How to deploy your project
+## Getting Started
+
+```shell
+# Get the latest snapshot
+git clone https://github.com/Nitheeshskumar/pettamo-mvp.git
+
+# Change directory
+cd pettamo
+
+# Install NPM dependencies
+npm install
+
+# Then simply start your app
+node run dev
+```
 
 ### What and how does project leverage Astra DB
 
