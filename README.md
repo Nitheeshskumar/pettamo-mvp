@@ -65,6 +65,9 @@ The backend codes are written in **functions/** folder
   * rel_type links to the corresponding user. for eg: the rel_id of a pet will be its owners uuid. 
   * This data model acheived full scalability still having a relation to perform some of the comple queries without having to add multiple tables
 
+
+<img src="https://github.com/Nitheeshskumar/pettamo-mvp/blob/main/readme/schema.png" alt="schema" />
+
 ### Credits
 
 * The contents of this repo are based on [Jake's port](https://github.com/tjake/todo-astra-react-serverless/) of the [TodoMVC code](https://github.com/tastejs/todomvc/tree/master/examples/react) originally written by [Pete Hunt](https://github.com/petehunt)
