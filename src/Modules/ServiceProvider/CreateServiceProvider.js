@@ -7,7 +7,7 @@ import  {  toaster} from '../../Components/Toast';
 import { createService } from '../../Services/UserServices';
 import { GlobalDispatchContext } from '../../ContextStore/ContextAPI';
 
-const CreatePet=()=>{
+const CreateServiceProvider=()=>{
 
 const [data,setData]=React.useState({})
 const dispatch = React.useContext(GlobalDispatchContext)
@@ -154,6 +154,6 @@ dispatch({type:'loader',payload:true})
   </div>
 }
 
-export default CreatePet
+export default CreateServiceProvider
 
 

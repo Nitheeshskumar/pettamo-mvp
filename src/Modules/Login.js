@@ -22,12 +22,13 @@ dispatch({type:'loader',payload:true})
 authenticate(payload)
 .then(res=>{
   dispatch({type:'loader',payload:false})
+  history.replace('/pets')
+  ManageLocalStorage.set('userDetails',res)
+  dispatch({type:'login',payload:res})
+
   toaster.success(getFname(res.name) + '👌')
-  setTimeout(() => {
-    dispatch({type:'login',payload:res})
-    ManageLocalStorage.set('userDetails',res)
-    history.replace('/pets')
-  }, 500);
+
+
 
 }).catch(e=>{
   dispatch({type:'loader',payload:false})
