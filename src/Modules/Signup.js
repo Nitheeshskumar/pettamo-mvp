@@ -25,7 +25,8 @@ if(!valPswd(Pswd.current.value)){
       email:Email.current.value,
       password:Pswd.current.value,
       id:uuid.v1(),
-      rel_type:'owner'
+      rel_type:'owner',
+      time:Date.now()
     }
     dispatch({type:'loader',payload:true})
 
