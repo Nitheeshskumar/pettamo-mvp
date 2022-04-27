@@ -1,12 +1,10 @@
-import React, { CSSProperties, useState } from 'react'
+import React, {  useState } from 'react'
 import AgoraUIKit, { layout } from 'agora-react-uikit'
 import 'agora-react-uikit/dist/index.css'
 import { useHistory } from 'react-router-dom'
 
 const App = () => {
   const [videocall, setVideocall] = useState(true)
-  const [isHost, setHost] = useState(true)
-  const [isPinned, setPinned] = useState(false)
   const [username, setUsername] = useState('')
   const history =useHistory()
   return (
@@ -24,8 +22,8 @@ const App = () => {
               appId: '2a68b3b9275842f49f3b9fcbd6786585',
               channel: 'test',
               token: null, //add your token if using app in secured mode
-              role: isHost ? 'host' : 'audience',
-              layout: isPinned ? layout.pin : layout.grid
+              role: 'host',
+              layout:layout.pin 
             }}
             rtmProps={{username: username || 'user', displayUsername: true}}
             callbacks={{
