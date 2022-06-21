@@ -2,3 +2,9 @@
 command = "npm run build"
 functions = "functions"
 publish = "build"
+
+[[redirects]]
+  from = "https://pettamo.on.fleek.co/*"
+  to = "https://pettamo.netlify.app/:splat 200!"
+  status = 301
+  force = true
