@@ -1,4 +1,4 @@
-const { getCollection } = require("./utils/astraClient");
+const { getCollection, headers } = require("./utils/astraClient");
 
 exports.handler = async (event, context) => {
   const data = await getCollection();
@@ -10,11 +10,13 @@ exports.handler = async (event, context) => {
     console.log(res)
 
     return {
+      headers,
       statusCode: 200,
       body: JSON.stringify(res),
     };
   } catch (e) {
     return {
+      headers,
       statusCode: 400,
       body: JSON.stringify(e),
     };
