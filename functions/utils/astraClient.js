@@ -22,7 +22,9 @@ const getCollection = async () => {
     .namespace(process.env.ASTRA_DB_KEYSPACE)
     .collection("pettamo");
 };
-const headers= {
-  "Access-Control-Allow-Origin": "*", // Allow from anywhere 
-}
+const headers = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "Content-Type",
+  "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+};
 module.exports = { getAstraClient, getCollection ,headers};

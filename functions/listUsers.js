@@ -1,6 +1,13 @@
 const { getCollection, headers } = require("./utils/astraClient");
 
 exports.handler = async (event, context) => {
+  if (event.httpMethod === "OPTIONS") {
+    return {
+      statusCode: 200,
+      headers,
+      body: JSON.stringify({ message: "Successful preflight call." }),
+    };
+  }
 
   const data = await getCollection();
 
