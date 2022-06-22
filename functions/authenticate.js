@@ -2,6 +2,7 @@ const { getCollection,headers } = require("./utils/astraClient");
 
 exports.handler = async (event, context) => {
   const data = await getCollection();
+  console.log('sdfs',event.body)
   const body = JSON.parse(event.body);
   console.log(body)
   try {
